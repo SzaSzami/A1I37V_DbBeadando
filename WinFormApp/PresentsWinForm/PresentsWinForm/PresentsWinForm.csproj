@@ -60,6 +60,7 @@
     <Compile Include="Models\Manager\DatabaseConnection.cs" />
     <Compile Include="Models\Manager\PresentsTable.cs" />
     <Compile Include="Models\Records\Ajandekok.cs" />
+    <Compile Include="Present_size.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AjandekokForm.resx">

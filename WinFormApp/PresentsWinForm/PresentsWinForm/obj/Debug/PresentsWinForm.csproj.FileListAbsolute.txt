@@ -2,9 +2,11 @@ C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\Pre
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\bin\Debug\PresentsWinForm.exe
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\bin\Debug\PresentsWinForm.pdb
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.csprojAssemblyReference.cache
-C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.Presents.resources
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.Properties.Resources.resources
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.csproj.GenerateResource.cache
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.csproj.CoreCompileInputs.cache
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.exe
 C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.pdb
+C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.AjandekokForm.resources
+C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\szabc\Documents\GitHub\A1I37V_DbBeadando\WinFormApp\PresentsWinForm\PresentsWinForm\obj\Debug\PresentsWinForm.csproj.CopyComplete

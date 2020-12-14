@@ -16,7 +16,7 @@ namespace PresentsWinForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Presents());
+            Application.Run(new AjandekokForm());
         }
     }
 }
