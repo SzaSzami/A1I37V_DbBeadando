@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Presents.Models.Records
+namespace PresentsWinForm.Models.Records
 {
     [Serializable]
     internal class IdTooLongException : Exception
