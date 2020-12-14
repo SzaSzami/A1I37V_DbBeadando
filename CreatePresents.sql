@@ -10,5 +10,5 @@ create table PRESENTS
 
 constraint pk_presents primary key(PRESENT_ID),
 constraint ch_presents_size check(PRESENT_SIZE in ('S','M','L','XL','XXL')),
-constraint fk_manufacturer foreign key(manufacturer_id) references makers(makers_id)
+constraint fk_manufacturer foreign key(MANUFACTURER_ID) references MAKERS(MAKERS_ID)
 );
