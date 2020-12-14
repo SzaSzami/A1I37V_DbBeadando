@@ -2,8 +2,8 @@ drop table MAKERS;
 
 create table MAKERS
 (
-	makers_id int not null,
-	makers_nev varchar2(200) not null,
+	MAKERS_ID int not null,
+	MAKERS_NEV varchar2(200) not null,
 
-	constraint pk_makers primary key(makers_id)
+	constraint pk_makers primary key(MAKERS_ID)
 );
