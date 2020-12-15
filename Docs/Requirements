@@ -1,0 +1,11 @@
+Adatbázisrendszerek gyakorlat beadandó követelményei:
+
+- A beadandó dolgozat témája szabadon választható.
+- CRUD műveletek legyenek megvalósítva (Create Read Update Delete).
+- Check, callcheck, insert legyenek kidolgozva.
+- Legyenek ellenőrzések az adatbázisban is, ne csak a programban. A hibákat az adatbázis is legyen képes megjeleníteni, ne csak a program.
+- A program legyen átlátható, mappákban rendezett, minden kódrész legyen rendezett mappákban tárolva.
+- Kivételek kezelése és saját kivétel osztályok létrehozása.
+- Mappákban való almappák kezelése (model -> Managers, Records).
+- GitHub használata és minimális dokumentálás a folyamatokról.
+- Az adatbázis képes legyen teljes körűen kommunikálni a programmal.
