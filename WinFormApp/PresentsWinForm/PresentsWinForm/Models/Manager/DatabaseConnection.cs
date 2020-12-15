@@ -13,14 +13,11 @@ namespace PresentsWinForm.Models.Manager
         {
             OracleConnection connection = new OracleConnection();
 
-            string connectionstring = @"Data Source=193.225.33.71;User Id=ORA_S1340;Password=EKE2020;";
+            string connectionstring = @"Data Source = 193.225.33.71;User Id = ORA_S1340;Password = EKE2020;";
 
             connection.ConnectionString = connectionstring;
             connection.Open();
             return connection;
         }
-
-
-
     }
 }

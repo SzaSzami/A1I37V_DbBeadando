@@ -22,7 +22,7 @@ namespace PresentsWinForm
         {
             InitializeComponent();
             tablemanager = new PresentsTable();
-            records_presentlist = new List<Ajandekok>();
+            records_presentlist = tablemanager.Select();
             bgWorker = new BackgroundWorker();
         }
 
@@ -52,8 +52,29 @@ namespace PresentsWinForm
 
         private void btn_updatepresent_Click(object sender, EventArgs e)
         {
+            dgv_Frissitese();
+        }
+
+        private void dgv_Frissitese()
+        {
+            dgv_Presents.Rows.Clear();
+            PresentsTable presentsTable = new PresentsTable();
+            foreach (Ajandekok ajik in presentsTable.Select())
+            {
+                dgv_Presents.Rows.Add(new object[]
+                {
+                    ajik.Present_id,
+                    ajik.Present_name,
+                    ajik.Manufacturer_id,
+                    ajik.Present_color,
+                    ajik.Present_size,
+                    ajik.Present_price,
+                    ajik.Present_weight
+                });
+            }
 
         }
+
 
         private void btn_deletepresent_Click(object sender, EventArgs e)
         {
@@ -79,6 +100,7 @@ namespace PresentsWinForm
             cmb_size.DataSource = Enum.GetValues(typeof(Present_size));
 
             InitDataGridView();
+            dgv_Frissitese();
         }
 
         private void AjandekokForm_Show(object sender, EventArgs e)
@@ -91,68 +113,14 @@ namespace PresentsWinForm
             dgv_Presents.Rows.Clear();
             dgv_Presents.Columns.Clear();
 
-            DataGridViewColumn IdColumn = new DataGridViewColumn()
-            {
-                Name = "Present_id",
-                HeaderText = "Present id",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(IdColumn);
-
-            DataGridViewColumn NameColumn = new DataGridViewColumn()
-            {
-                Name = "Present_name",
-                HeaderText = "Present name",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(NameColumn);
-
-            DataGridViewColumn ManuIdColumn = new DataGridViewColumn()
-            {
-                Name = "Manufacturer_id",
-                HeaderText = "Manufacturer id",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(ManuIdColumn);
-
-            DataGridViewColumn ColorColumn = new DataGridViewColumn()
-            {
-                Name = "Present_color",
-                HeaderText = "Present color",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(ColorColumn);
-
-            DataGridViewColumn SizeColumn = new DataGridViewColumn()
-            {
-                Name = "Present_size",
-                HeaderText = "Present size",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(SizeColumn);
-
-            DataGridViewColumn PriceColumn = new DataGridViewColumn()
-            {
-                Name = "Present_price",
-                HeaderText = "Present price",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(PriceColumn);
-
-            DataGridViewColumn WeightColumn = new DataGridViewColumn()
-            {
-                Name = "Present_weight",
-                HeaderText = "Present weight",
-                Visible = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader
-            };
-            dgv_Presents.Columns.Add(WeightColumn);
+            dgv_Presents.AutoGenerateColumns = false;
+            dgv_Presents.Columns.Add("present_id", "Present ID");
+            dgv_Presents.Columns.Add("present_name", "Present Name");
+            dgv_Presents.Columns.Add("manufacturer_id", "Manufacturer ID");
+            dgv_Presents.Columns.Add("present_color", "Present Color");
+            dgv_Presents.Columns.Add("present_size", "Present Size");
+            dgv_Presents.Columns.Add("present_price", "Present Price");
+            dgv_Presents.Columns.Add("present_weight", "Present Weight");
         }
 
         private void BgWorker_RunWorkerComplete(object sender, RunWorkerCompletedEventArgs e)
@@ -160,11 +128,10 @@ namespace PresentsWinForm
             FillDataGridView();
         }
 
-
-
         private void FillDataGridView()
         {
             DataGridViewRow[] dataGridViewRows = new DataGridViewRow[records_presentlist.Count];
+
             for (int i = 0; i < records_presentlist.Count; i++)
             {
                 DataGridViewRow dataGridViewRow = new DataGridViewRow();
@@ -200,30 +167,21 @@ namespace PresentsWinForm
                 dataGridViewRows[i] = dataGridViewRow;
 
             }
-
-            dgv_Presents.Rows.Clear();
             dgv_Presents.Rows.AddRange(dataGridViewRows);
 
         }
+
         private void BgWorekr_DoWork(object sender, DoWorkEventArgs e)
         {
             records_presentlist = tablemanager.Select();
         }
 
-        
         private void txt_presentid_Leave(object sender, EventArgs e)
         {
             string actual = txt_presentid.Text;
             bool Correct = tablemanager.CheckPresentId(actual);
-            txt_presentid.BackColor = Correct ? Color.White : Color.Yellow;
+            txt_presentid.BackColor = Correct ? Color.Green : Color.Red;
         }
-
-
-
-
-
-
-
 
     }
 }

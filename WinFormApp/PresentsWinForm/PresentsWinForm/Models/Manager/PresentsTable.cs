@@ -14,24 +14,19 @@ namespace PresentsWinForm.Models.Manager
         {
             OracleConnection oc = new OracleConnection();
 
-            string connectionString = @"Data Source=193.225.33.71;User Id=ORA_S1340;Password=EKE2020;";
-            oc.ConnectionString = connectionString;
+            string connectionstring = @"Data Source = 193.225.33.71;User Id = ORA_S1340;Password = EKE2020;";
+            oc.ConnectionString = connectionstring;
             return oc;
         }
 
         public List<Ajandekok> Select()
         {
             List<Ajandekok> records = new List<Ajandekok>();
-            OracleConnection oc = new OracleConnection();
-            oc.Open();
-
             OracleCommand command = new OracleCommand();
 
+            command.Connection = connectionopen();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "SELECT PRESENT_ID, PRESENT_NAME, MANUFACTURER_ID, PRESENT_COLOR, PRESENT_SIZE, PRESENT_PRICE, PRESENT_WEIGHT FROM PRESENTS";
-
-            command.Connection = oc;
-
 
             OracleDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -42,6 +37,7 @@ namespace PresentsWinForm.Models.Manager
                 presento.Manufacturer_id = int.Parse(reader["MANUFACTURER_ID"].ToString());
                 presento.Present_color = reader["PRESENT_COLOR"].ToString();
                 presento.Present_size = reader["PRESENT_SIZE"].ToString();
+                presento.Present_price = int.Parse(reader["PRESENT_PRICE"].ToString());
                 presento.Present_weight = int.Parse(reader["PRESENT_WEIGHT"].ToString());
 
                 records.Add(presento);
@@ -92,15 +88,10 @@ namespace PresentsWinForm.Models.Manager
 
         public int Insert(Ajandekok record)
         {
-            OracleConnection oc = GetOracleConnection();
-            oc.Open();
-
-            OracleTransaction ot = oc.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
 
             OracleCommand command = new OracleCommand();
             command.Connection = connectionopen();
             command.CommandType = System.Data.CommandType.Text;
-            //command.CommandText = "spInsert_Presents";
             command.CommandText = "INSERT INTO PRESENTS(PRESENT_ID, PRESENT_NAME, MANUFACTURER_ID, PRESENT_COLOR, PRESENT_SIZE, PRESENT_PRICE, PRESENT_WEIGHT)" +
                 "VALUES(:Present_id, :Present_name, :Manufacturer_id, :Present_color, :Present_size, :Present_price, :Present_weight)";
 
@@ -175,22 +166,7 @@ namespace PresentsWinForm.Models.Manager
                 ParameterName = "p_out_rowcnt",
                 Direction = System.Data.ParameterDirection.Output
             };
-
-            command.Connection = oc;
-            command.Transaction = ot;
-
-            try
-            {
-                command.ExecuteNonQuery();
-                int affectedRows = int.Parse(rowcountParameter.Value.ToString());
-                ot.Commit();
-                return affectedRows;
-            }
-            catch (Exception)
-            {
-                ot.Rollback();
-                return 0;
-            }
+            return command.ExecuteNonQuery();
         }
 
         public bool CheckPresentId(string Present_id)
